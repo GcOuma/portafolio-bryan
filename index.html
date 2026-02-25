@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bryan Castelo | Portafolio Profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4cc9f0;
+            --bg: #f8f9fa;
+            --text: #2b2d42;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Navegación Superior */
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo { font-weight: 800; font-size: 1.5rem; color: var(--primary); }
+        
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--text); 
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            padding: 0 20px;
+        }
+
+        /* Foto de Perfil - Corregida */
+        .profile-img-container {
+            width: 220px;
+            height: 220px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            animation: imgFadeIn 1.2s ease-out;
+            background-color: #eee;
+        }
+
+        @keyframes imgFadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 0.5rem; color: var(--text); }
+        .hero p { font-size: 1.1rem; max-width: 600px; color: #4a4e69; margin-bottom: 15px; }
+        
+        /* Cursor de escritura azul */
+        .typing-text::after {
+            content: "|";
+            color: var(--primary);
+            font-weight: 900;
+            animation: blink 0.7s infinite;
+            margin-left: 2px;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Contenedor de Pestañas */
+        .content-section { padding: 80px 10%; min-height: 80vh; }
+        .tabs-container {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .tab-menu { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
+        .tab-btn {
+            padding: 12px 25px;
+            border: none;
+            background: #f0f2f5;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+        }
+
+        .tab-pane { display: none; animation: fadeIn 0.6s ease; }
+        .tab-pane.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .feature-card {
+            padding: 25px;
+            border-radius: 15px;
+            background: #f8f9fa;
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .feature-card i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+
+        .stat-bar { margin-bottom: 20px; }
+        .bar-container { background: #eee; height: 12px; border-radius: 10px; overflow: hidden; margin-top: 8px; }
+        .bar-value { background: linear-gradient(90deg, var(--primary), var(--accent)); height: 100%; width: 0; transition: 1s ease-in-out; }
+
+        .contact-box {
+            text-align: center;
+            background: var(--text);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 20px;
+        }
+        .btn-contact {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">BRYAN CASTELO</div>
+        <ul class="nav-links">
+            <li><a onclick="scrollToSection('tabs')">Mi Perfil</a></li>
+            <li><a onclick="scrollToSection('contact')">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="profile-img-container">
+            <img src="foto-bryan.jpeg" alt="Bryan Castelo" class="profile-img" onerror="this.src='https://via.placeholder.com/220?text=Sube+Tu+Foto'">
+        </div>
+        
+        <h1>Hola, soy Bryan Castelo</h1>
+        <p>Ingeniero de Software enfocado en crear soluciones digitales eficientes e innovadoras.</p>
+        <div style="min-height: 1.5em;">
+            <span class="typing-text" id="typing" style="font-weight: 600; color: var(--primary); font-size: 1.5rem;"></span>
+        </div>
+    </header>
+
+    <section id="tabs" class="content-section">
+        <div class="tabs-container">
+            <div class="tab-menu">
+                <button class="tab-btn active" onclick="switchTab(event, 'about')">Sobre Mí</button>
+                <button class="tab-btn" onclick="switchTab(event, 'experience')">Experiencia</button>
+                <button class="tab-btn" onclick="switchTab(event, 'skills')">Habilidades</button>
+                <button class="tab-btn" onclick="switchTab(event, 'education')">Logros</button>
+            </div>
+
+            <div id="about" class="tab-pane active">
+                <div class="grid">
+                    <div class="feature-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>¿Qué hago?</h3>
+                        <p>Diseño aplicaciones robustas buscando siempre la solución más eficiente. Mi enfoque incluye la innovación mediante IA y herramientas tecnológicas de vanguardia.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Mi Enfoque</h3>
+                        <p>Alta adaptabilidad y capacidad de aprendizaje rápido para enfrentar retos tecnológicos cambiantes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="experience" class="tab-pane">
+                <div class="feature-card" style="margin-bottom: 20px;">
+                    <span style="color: var(--primary); font-weight: bold;">Ecuabamba Technologies S.A (CITYTECH)</span>
+                    <h3>Especialista en Mantenimiento y Soporte (1 año)</h3>
+                    <p>Mantenimiento a la plataforma EASYFACT desarrollada en .NET y SQL Server.</p>
+                </div>
+                <div class="feature-card" style="margin-bottom: 20px;">
+                    <span style="color: var(--primary); font-weight: bold;">Ecuabamba Technologies S.A (CITYTECH)</span>
+                    <h3>Desarrollador Web (6 meses)</h3>
+                    <p>Desarrollos en .NetCore, EntityFramework, Oracle y Vue.js.</p>
+                </div>
+            </div>
+
+            <div id="skills" class="tab-pane">
+                <div class="stat-bar">
+                    <div style="display: flex; justify-content: space-between;"><span>Desarrollo .NET</span><span>95%</span></div>
+                    <div class="bar-container"><div class="bar-value" style="width: 95%;"></div></div>
+                </div>
+                <div class="stat-bar">
+                    <div style="display: flex; justify-content: space-between;"><span>Lenguaje Java</span><span>85%</span></div>
+                    <div class="bar-container"><div class="bar-value" style="width: 85%;"></div></div>
+                </div>
+                <div class="stat-bar">
+                    <div style="display: flex; justify-content: space-between;"><span>Web (HTML/CSS)</span><span>80%</span></div>
+                    <div class="bar-container"><div class="bar-value" style="width: 80%;"></div></div>
+                </div>
+            </div>
+
+            <div id="education" class="tab-pane">
+                <div class="grid">
+                    <div class="feature-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Ingeniería de Software</h3>
+                        <p>Egresado de la ESPOCH (2019-2024).</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-star"></i>
+                        <h3>Excelencia Académica</h3>
+                        <p>Certificación al mejor promedio de la carrera (2021-2022).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="content-section" style="padding-top: 0;">
+        <div class="contact-box">
+            <h2>¿Tienes un desafío para mí?</h2>
+            <div style="margin-top: 30px;">
+                <p><i class="fas fa-phone"></i> 096722260</p>
+                <p><i class="fas fa-envelope"></i> castelobryan@hotmail.es</p>
+                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 10px;">Ref: Ing. Angélica Sandoval</p>
+            </div>
+            <a href="mailto:castelobryan@hotmail.es" class="btn-contact">Enviar Mensaje</a>
+        </div>
+    </section>
+
+    <script>
+        // EFECTO ESCRITURA Y BORRADO
+        const el = document.getElementById("typing");
+        const phrases = ["Desarrollador Web", "Gestor de base de datos", "Especialista en .NET, Java y Python."];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function typeLoop() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                el.innerText = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50;
+            } else {
+                el.innerText = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Pausa al completar palabra
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+            setTimeout(typeLoop, typeSpeed);
+        }
+
+        window.onload = typeLoop;
+
+        function switchTab(evt, tabName) {
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
