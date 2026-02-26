@@ -109,7 +109,20 @@
             padding: 40px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.05);
         }
+/* Estilos de Habilidades (Skills) */
+        .skills-category { margin-bottom: 30px; }
+        .skills-category h3 { margin-bottom: 15px; color: var(--secondary); border-bottom: 2px solid var(--accent); display: inline-block; }
+        
+        .stat-bar { margin-bottom: 15px; }
+        .stat-bar span { font-weight: 600; font-size: 0.9rem; }
+        .bar-container { background: var(--progress-bg); height: 14px; border-radius: 20px; overflow: hidden; margin-top: 5px; }
+        .bar-value { background: var(--progress-fill); height: 100%; border-radius: 20px; transition: 1.5s ease-in-out; }
 
+        /* Certificados */
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .cert-card { background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 10px; text-align: left; }
+        .cert-card h4 { font-size: 0.95rem; margin-bottom: 5px; color: var(--text); }
+        .cert-card p { font-size: 0.8rem; color: #666; }
         .tab-menu { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
         .tab-btn {
             padding: 12px 25px;
@@ -164,6 +177,25 @@
             font-weight: 700;
             margin-top: 20px;
         }
+        /* Botón de descarga PDF */
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background-color: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(63, 55, 201, 0.3);
+        }
+        .btn-download:hover {
+            transform: scale(1.05);
+            background-color: var(--primary);
+        }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
@@ -187,65 +219,156 @@
         </div>
         
         <h1>Hola, soy Bryan Castelo</h1>
-        <p>Ingeniero de Software enfocado en crear soluciones digitales eficientes e innovadoras.</p>
+        <p>Soy un ingeniero de software con 24 años, graduado de la ESPOCH, apasionado por el desarrollo web y backend. Tengo experiencia en tecnologías como HTML, CSS y JavaScript, además de trabajar con frameworks modernos como React para el frontend y Spring Boot y Laravel para el backend. También manejo bases de datos relacionales como MySQL, PostgreSQL y SQL Server, lo que me permite desarrollar aplicaciones robustas y escalables. Siempre estoy en constante aprendizaje, buscando mejorar mis habilidades y aportar soluciones eficientes en cada proyecto.</p>
         <div style="min-height: 1.5em;">
             <span class="typing-text" id="typing" style="font-weight: 600; color: var(--primary); font-size: 1.5rem;"></span>
         </div>
     </header>
 
-    <section id="tabs" class="content-section">
-        <div class="tabs-container">
-            <div class="tab-menu">
-                <button class="tab-btn active" onclick="switchTab(event, 'about')">Sobre Mí</button>
-                <button class="tab-btn" onclick="switchTab(event, 'experience')">Experiencia</button>
-                <button class="tab-btn" onclick="switchTab(event, 'skills')">Habilidades</button>
-                <button class="tab-btn" onclick="switchTab(event, 'education')">Logros</button>
-            </div>
+  <section id="tabs" class="content-section">
+    <div class="tabs-container">
+        <div class="tab-menu">
+            <button class="tab-btn active" onclick="switchTab(event, 'about')">Sobre Mí</button>
+            <button class="tab-btn" onclick="switchTab(event, 'experience')">Experiencia</button>
+            <button class="tab-btn" onclick="switchTab(event, 'skills')">Habilidades</button>
+            <button class="tab-btn" onclick="switchTab(event, 'education')">Logros</button>
+            <button class="tab-btn" onclick="switchTab(event, 'proyectos')">Proyectos</button>
+        </div>
 
-            <div id="about" class="tab-pane active">
+        <div id="about" class="tab-pane active">
+            <div class="grid">
+                <div class="feature-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>¿Qué hago?</h3>
+                    <p>Diseño aplicaciones robustas buscando siempre la solución más eficiente. Mi enfoque incluye la innovación mediante IA y herramientas tecnológicas de vanguardia.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Mi Enfoque</h3>
+                    <p>Alta adaptabilidad y capacidad de aprendizaje rápido para enfrentar retos tecnológicos cambiantes.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="experience" class="tab-pane">
+            <div class="feature-card" style="margin-bottom: 20px;">
+                <span style="color: var(--primary); font-weight: bold;">Ecuabamba Technologies S.A (CITYTECH)</span>
+                <h3>Especialista en Mantenimiento y Soporte (1 año)</h3>
+                <p>Mantenimiento a la plataforma EASYFACT desarrollada en .NET y SQL Server.</p>
+            </div>
+            <div class="feature-card" style="margin-bottom: 20px;">
+                <span style="color: var(--primary); font-weight: bold;">Ecuabamba Technologies S.A (CITYTECH)</span>
+                <h3>Desarrollador Web (6 meses)</h3>
+                <p>Desarrollos en .NetCore, EntityFramework, Oracle y Vue.js.</p>
+            </div>
+            <div class="feature-card">
+                <span style="color: var(--primary); font-weight: bold;">Grupo Pixelia</span>
+                <h3>Desarrollador Web / Consultor de BD</h3>
+                <p>2 meses aportando ideas de desarrollo y creando páginas web interactivas.</p>
+            </div>
+        </div>
+
+   <div id="skills" class="tab-pane">
                 <div class="grid">
-                    <div class="feature-card">
-                        <i class="fas fa-lightbulb"></i>
-                        <h3>¿Qué hago?</h3>
-                        <p>Diseño aplicaciones robustas buscando siempre la solución más eficiente. Mi enfoque incluye la innovación mediante IA y herramientas tecnológicas de vanguardia.</p>
+                    <div class="skills-category">
+                        <h3>Frontend</h3>
+                        <div class="stat-bar">
+                            <div style="display: flex; justify-content: space-between;"><span>React</span><span>90%</span></div>
+                            <div class="bar-container"><div class="bar-value" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="stat-bar">
+                            <div style="display: flex; justify-content: space-between;"><span>Angular</span><span>80%</span></div>
+                            <div class="bar-container"><div class="bar-value" style="width: 80%;"></div></div>
+                        </div>
+                        <div class="stat-bar">
+                            <div style="display: flex; justify-content: space-between;"><span>HTML</span><span>90%</span></div>
+                            <div class="bar-container"><div class="bar-value" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="stat-bar">
+                            <div style="display: flex; justify-content: space-between;"><span>CSS / Tailwind</span><span>85%</span></div>
+                            <div class="bar-container"><div class="bar-value" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="stat-bar">
+                            <div style="display: flex; justify-content: space-between;"><span>JavaScript / TypeScript</span><span>85%</span></div>
+                            <div class="bar-container"><div class="bar-value" style="width: 85%;"></div></div>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <i class="fas fa-rocket"></i>
-                        <h3>Mi Enfoque</h3>
-                        <p>Alta adaptabilidad y capacidad de aprendizaje rápido para enfrentar retos tecnológicos cambiantes.</p>
+
+                    <div class="skills-category">
+                        <h3>Backend</h3>
+                        <div class="stat-bar">
+                            <div style="display: flex; justify-content: space-between;"><span>Spring Boot</span><span>85%</span></div>
+                            <div class="bar-container"><div class="bar-value" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="stat-bar">
+                            <div style="display: flex; justify-content: space-between;"><span>Laravel (PHP)</span><span>80%</span></div>
+                            <div class="bar-container"><div class="bar-value" style="width: 80%;"></div></div>
+                        </div>
+                        <div class="stat-bar">
+                            <div style="display: flex; justify-content: space-between;"><span>Node.js / Express</span><span>70%</span></div>
+                            <div class="bar-container"><div class="bar-value" style="width: 70%;"></div></div>
+                        </div>
+                        <div class="stat-bar">
+                            <div style="display: flex; justify-content: space-between;"><span>ASP.NET Core</span><span>65%</span></div>
+                            <div class="bar-container"><div class="bar-value" style="width: 65%;"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3>Data & DevOps</h3>
+                        <div class="stat-bar">
+                            <div style="display: flex; justify-content: space-between;"><span>SQL (MySQL/PostgreSQL/SQL Server)</span><span>75%</span></div>
+                            <div class="bar-container"><div class="bar-value" style="width: 75%;"></div></div>
+                        </div>
+                        <div class="stat-bar">
+                            <div style="display: flex; justify-content: space-between;"><span>JWT / Auth</span><span>80%</span></div>
+                            <div class="bar-container"><div class="bar-value" style="width: 80%;"></div></div>
+                        </div>
+                        <div class="stat-bar">
+                            <div style="display: flex; justify-content: space-between;"><span>Docker</span><span>65%</span></div>
+                            <div class="bar-container"><div class="bar-value" style="width: 65%;"></div></div>
+                        </div>
+                        <div class="stat-bar">
+                            <div style="display: flex; justify-content: space-between;"><span>Git / GitHub</span><span>85%</span></div>
+                            <div class="bar-container"><div class="bar-value" style="width: 85%;"></div></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div id="experience" class="tab-pane">
-                <div class="feature-card" style="margin-bottom: 20px;">
-                    <span style="color: var(--primary); font-weight: bold;">Ecuabamba Technologies S.A (CITYTECH)</span>
-                    <h3>Especialista en Mantenimiento y Soporte (1 año)</h3>
-                    <p>Mantenimiento a la plataforma EASYFACT desarrollada en .NET y SQL Server.</p>
+        <div id="proyectos" class="tab-pane">
+            <div class="grid">
+                <div class="feature-card" style="border-left: 5px solid var(--primary);">
+                    <i class="fas fa-external-link-alt"></i>
+                    <h3>Postula.net</h3>
+                    <p>Creador y desarrollador de la plataforma de postulaciones en línea para la empresa PROASETEL S.A.</p>
+                    <a href="https://postula.net" target="_blank" class="btn-contact" style="padding: 10px 20px; font-size: 0.9rem; margin-top: 15px;">Visitar Proyecto</a>
                 </div>
-                <div class="feature-card" style="margin-bottom: 20px;">
-                    <span style="color: var(--primary); font-weight: bold;">Ecuabamba Technologies S.A (CITYTECH)</span>
-                    <h3>Desarrollador Web (6 meses)</h3>
-                    <p>Desarrollos en .NetCore, EntityFramework, Oracle y Vue.js.</p>
+
+                <div class="feature-card" style="border-left: 5px solid var(--primary);">
+                    <i class="fas fa-external-link-alt"></i>
+                    <h3>Reportes</h3>
+                    <p>Creador y desarrollador de la plataforma gestora de reportes en línea.</p>
+                    <a href="https://lightpink-ape-819864.hostingersite.com/reports" target="_blank" class="btn-contact" style="padding: 10px 20px; font-size: 0.9rem; margin-top: 15px;">Visitar Proyecto</a>
+                </div>
+
+                <div class="feature-card" style="border-left: 5px solid var(--primary);">
+                    <i class="fas fa-external-link-alt"></i>
+                    <h3>Agencia de viajes</h3>
+                    <p>Desarrollador de la plataforma gestora de viajes.</p>
+                    <a href="https://lightsalmon-tarsier-970519.hostingersite.com/" target="_blank" class="btn-contact" style="padding: 10px 20px; font-size: 0.9rem; margin-top: 15px;">Visitar Proyecto</a>
+                </div>
+
+                <div class="feature-card" style="border-left: 5px solid var(--primary);">
+                    <i class="fas fa-external-link-alt"></i>
+                    <h3>Página web cafetería</h3>
+                    <p>Desarrollador de la plataforma de menús de cafetería "Delicia".</p>
+                    <a href="https://dodgerblue-bat-629130.hostingersite.com/about" target="_blank" class="btn-contact" style="padding: 10px 20px; font-size: 0.9rem; margin-top: 15px;">Visitar Proyecto</a>
                 </div>
             </div>
+        </div>
 
-            <div id="skills" class="tab-pane">
-                <div class="stat-bar">
-                    <div style="display: flex; justify-content: space-between;"><span>Desarrollo .NET</span><span>95%</span></div>
-                    <div class="bar-container"><div class="bar-value" style="width: 95%;"></div></div>
-                </div>
-                <div class="stat-bar">
-                    <div style="display: flex; justify-content: space-between;"><span>Lenguaje Java</span><span>85%</span></div>
-                    <div class="bar-container"><div class="bar-value" style="width: 85%;"></div></div>
-                </div>
-                <div class="stat-bar">
-                    <div style="display: flex; justify-content: space-between;"><span>Web (HTML/CSS)</span><span>80%</span></div>
-                    <div class="bar-container"><div class="bar-value" style="width: 80%;"></div></div>
-                </div>
-            </div>
-
-            <div id="education" class="tab-pane">
+        <div id="education" class="tab-pane">
                 <div class="grid">
                     <div class="feature-card">
                         <i class="fas fa-graduation-cap"></i>
@@ -258,6 +381,39 @@
                         <p>Certificación al mejor promedio de la carrera (2021-2022).</p>
                     </div>
                 </div>
+
+                <div style="margin-top: 40px; text-align: center;">
+                    <h3 style="margin-bottom: 20px;"><i class="fas fa-certificate"></i> Certificaciones</h3>
+                    <div class="cert-grid">
+                        <div class="cert-card">
+                            <h4>Asistente Virtual con IA (RASA)</h4>
+                            <p>ESPOCH</p>
+                        </div>
+                        <div class="cert-card">
+                            <h4>Máster en React (MERN, JWT)</h4>
+                            <p>Udemy</p>
+                        </div>
+                        <div class="cert-card">
+                            <h4>Curso Completo de Python</h4>
+                            <p>Udemy</p>
+                        </div>
+                        <div class="cert-card">
+                            <h4>Spring Framework 6 y Boot 3</h4>
+                            <p>Udemy</p>
+                        </div>
+                        <div class="cert-card">
+                            <h4>Máster en Java de Cero a Experto</h4>
+                            <p>Udemy</p>
+                        </div>
+                        <div class="cert-card">
+                            <h4>Hardening en Sistemas</h4>
+                            <p>ESPOCH</p>
+                        </div>
+                    </div>
+                    <a href="certificaciones.pdf" download="Certificaciones_Bryan_Castelo.pdf" class="btn-download">
+                        <i class="fas fa-file-pdf"></i> Descargar Certificados (PDF)
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -268,7 +424,9 @@
             <div style="margin-top: 30px;">
                 <p><i class="fas fa-phone"></i> 096722260</p>
                 <p><i class="fas fa-envelope"></i> castelobryan@hotmail.es</p>
-                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 10px;">Ref: Ing. Angélica Sandoval</p>
+                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 10px;">Ref: Ing. Sebastian Obregon - 099 – 853 - 8843 (Project Manager/ Ecuabamba) </p>
+                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 10px;">Ref: Ing. Cristian Quezpas - 096 – 270 - 5721 (Gerente grupo Pixelia) </p>
+                <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 10px;">Ref: Ing. Denis Rodriguez - 096 – 601 -1774 (Representante de PROASETEL S.A) </p>
             </div>
             <a href="mailto:castelobryan@hotmail.es" class="btn-contact">Enviar Mensaje</a>
         </div>
